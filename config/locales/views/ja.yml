@@ -9,7 +9,7 @@ ja:
       heading: '図書追加'
       back: '図書一覧へ戻る'
     index:
-      heading: '図書一覧'
+      books: '図書一覧'
       show: '詳細'
       create: '図書の追加'
       title: 'タイトル'
