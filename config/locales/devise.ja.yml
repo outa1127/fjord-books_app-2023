@@ -1,0 +1,92 @@
+ja:
+  errors:
+    messages:
+      not_found: 'は見つかりませんでした'
+      #      not_found: "not found"
+      already_confirmed: 'は既に登録済みです'
+      #      already_confirmed: "was already confirmed"
+      not_locked: 'は凍結されていません'
+      #      not_locked: "was not locked"
+      not_saved:
+        one: '1つのエラーにより、この%{resource}は保存されませんでした'
+        other: '%{count}件のエラーにより%{resource}は保存されませんでした'
+
+  devise:
+    failure:
+      unauthenticated: 'ログインしてください。'
+      #      unauthenticated: 'You need to sign in or sign up before continuing.'
+      unconfirmed: '本登録を行ってください。'
+      #      unconfirmed: 'You have to confirm your account before continuing.'
+      locked: 'あなたのアカウントは凍結されています。'
+      #      locked: 'Your account is locked.'
+      invalid: 'メールアドレスかパスワードが違います。'
+      #      invalid: 'Invalid email or password.'
+      invalid_token: '認証キーが不正です。'
+      #      invalid_token: 'Invalid authentication token.'
+      timeout: 'セッションがタイムアウトしました。もう一度ログインしてください。'
+      #      timeout: 'Your session expired, please sign in again to continue.'
+      inactive: 'アカウントがアクティベートされていません。'
+    #      inactive: 'Your account was not activated yet.'
+    sessions:
+      title: 'ログイン'
+      login_button: 'ログイン'
+      signed_in: 'ログインしました。'
+      #      signed_in: 'Signed in successfully.'
+      signed_out: 'ログアウトしました。'
+    #      signed_out: 'Signed out successfully.'
+    passwords:
+      new_password: '新しいパスワード'
+      characters_minimum: '文字は最低でも入力'
+      password_confirm: '確認のためもう一度入力してください'
+      title_change_password: 'パスワードの変更'
+      change_password_button: 'パスワードを変更'
+      forgot_password: 'パスワードを忘れた？'
+      send_reset_mail: 'パスワードリセット用のメールを送る'
+      send_instructions: 'パスワードのリセット方法を数分以内にメールでご連絡します。'
+      #      send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
+      updated: 'パスワードを変更しました。'
+    #      updated: 'Your password was changed successfully. You are now signed in.'
+    confirmations:
+      send_instructions: '登録方法を数分以内にメールでご連絡します。'
+      #      send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
+      confirmed: 'アカウントを登録しました。'
+    #      confirmed: 'Your account was successfully confirmed. You are now signed in.'
+    shared:
+      log_in: 'ログイン'
+      sign_up: 'サインアップ'
+      forgot_password: 'パスワードを忘れた場合'
+      confirmation: '認証メールが届かない場合'
+      unlock: 'ロック解除のメールが届かない場合'
+    registrations:
+      sign_up: 'サインアップ'
+      title: 'ユーザー情報更新'
+      password_blank_message: '変更したくない場合空欄でも可'
+      characters_minimum: '文字は最低でも入力'
+      current_password_confirm_message: 'ユーザー情報更新のためには入力してください'
+      update_button: '更新'
+      delete_button: '削除'
+      signed_up: 'アカウント登録を受け付けました。確認のメールをお送りします。'
+      #      signed_up: 'You have signed up successfully. If enabled, a confirmation was sent to your e-mail.'
+      updated: 'アカウントを更新しました。'
+      #      updated: 'You updated your account successfully.'
+      destroyed: 'アカウントを削除しました。またのご利用をお待ちしております。'
+    #      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+    unlocks:
+      send_instructions: 'アカウントの凍結解除方法を数分以内にメールでご連絡します。'
+      #      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
+      unlocked: 'アカウントを凍結解除しました。'
+    #      unlocked: 'Your account was successfully unlocked. You are now signed in.'
+    mailer:
+      change_password: 'パスワードを変更する'
+      mail_introduction: 'パスワードを変更するためのリンクをリクエストされました。以下のリンクから変更できます。'
+      ignore_message: 'もしあなたがこのメールをリクエストしていないのであれば、無視してください。'
+      accsess_message: '上記のリンクにアクセスして新しいパスワードを作成するまで、パスワードは変更されません。'
+      confirmation_instructions:
+        subject: 'アカウントの登録方法'
+      #        subject: 'Confirmation instructions'
+      reset_password_instructions:
+        subject: 'パスワードの再設定'
+      #        subject: 'Reset password instructions'
+      unlock_instructions:
+        subject: 'アカウントの凍結解除'
+#        subject: 'Unlock Instructions'
