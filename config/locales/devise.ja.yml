@@ -6,7 +6,10 @@ ja:
       already_confirmed: 'は既に登録済みです'
       #      already_confirmed: "was already confirmed"
       not_locked: 'は凍結されていません'
-  #      not_locked: "was not locked"
+      #      not_locked: "was not locked"
+      not_saved:
+        one: '1つのエラーにより、この%{resource}は保存されませんでした'
+        other: '%{count}件のエラーにより%{resource}は保存されませんでした'
 
   devise:
     failure:
@@ -54,7 +57,7 @@ ja:
       title: 'ユーザー情報更新'
       password_blank_message: '変更したくない場合空欄でも可'
       characters_minimum: '文字は最低でも入力'
-      current_password_confirm_message: 'パスワード変更のためには必要です'
+      current_password_confirm_message: 'ユーザー情報更新のためには入力してください'
       update_button: '更新'
       delete_button: '削除'
       signed_up: 'アカウント登録を受け付けました。確認のメールをお送りします。'
