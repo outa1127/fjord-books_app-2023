@@ -35,6 +35,11 @@ ja:
       signed_out: 'ログアウトしました。'
     #      signed_out: 'Signed out successfully.'
     passwords:
+      new_password: '新しいパスワード'
+      characters_minimum: '文字は最低でも入力'
+      password_confirm: '確認のためもう一度入力してください'
+      title_change_password: 'パスワードの変更'
+      change_password_button: 'パスワードを変更'
       forgot_password: 'パスワードを忘れた？'
       send_reset_mail: 'パスワードリセット用のメールを送る'
       send_instructions: 'パスワードのリセット方法を数分以内にメールでご連絡します。'
@@ -72,6 +77,10 @@ ja:
       unlocked: 'アカウントを凍結解除しました。'
     #      unlocked: 'Your account was successfully unlocked. You are now signed in.'
     mailer:
+      change_password: 'パスワードを変更する'
+      mail_introduction: 'パスワードを変更するためのリンクをリクエストされました。以下のリンクから変更できます。'
+      ignore_message: 'もしあなたがこのメールをリクエストしていないのであれば、無視してください。'
+      accsess_message: '上記のリンクにアクセスして新しいパスワードを作成するまで、パスワードは変更されません。'
       confirmation_instructions:
         subject: 'アカウントの登録方法'
       #        subject: 'Confirmation instructions'
