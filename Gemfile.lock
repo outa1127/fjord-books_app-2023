@@ -97,6 +97,8 @@ GEM
       image_processing (~> 1.1)
       marcel (~> 1.0.0)
       ssrf_filter (~> 1.0)
+    childprocess (5.1.0)
+      logger (~> 1.5)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     date (3.3.3)
@@ -109,6 +111,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.13.0)
+      devise (>= 4.9.0)
+      rails-i18n
     erb_lint (0.4.0)
       activesupport
       better_html (>= 2.0.1)
@@ -152,6 +157,18 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
+    launchy (3.1.1)
+      addressable (~> 2.8)
+      childprocess (~> 5.0)
+      logger (~> 1.6)
+    letter_opener (1.10.0)
+      launchy (>= 2.2, < 4)
+    letter_opener_web (3.0.0)
+      actionmailer (>= 6.1)
+      letter_opener (~> 1.9)
+      railties (>= 6.1)
+      rexml
+    logger (1.7.0)
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -214,6 +231,9 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    rails-i18n (7.0.10)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     railties (7.0.6)
       actionpack (= 7.0.6)
       activesupport (= 7.0.6)
@@ -306,12 +326,14 @@ DEPENDENCIES
   carrierwave
   debug
   devise
+  devise-i18n
   erb_lint
   faker
   i18n_generators
   importmap-rails
   jbuilder
   kaminari
+  letter_opener_web
   puma
   rails (~> 7.0.6)
   rubocop (~> 1.45.1)
