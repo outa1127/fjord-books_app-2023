@@ -1,0 +1,6 @@
+ja:
+  books:
+    create:
+      book_created: '本の追加に成功しました'
+    update:
+      book_updated: '本の更新に成功しました'
