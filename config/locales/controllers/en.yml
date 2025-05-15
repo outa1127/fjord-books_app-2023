@@ -1,0 +1,8 @@
+en:
+  books:
+    create:
+      book_created: 'Successfully added the %{book}.'
+    update:
+      book_updated: 'Successfully updated the %{book}.'
+    delete:
+      book_deleted: 'Successfully deleted the %{book}.'

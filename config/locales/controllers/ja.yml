@@ -3,6 +3,6 @@ ja:
     create:
       book_created: '%{book}の追加に成功しました'
     update:
-      book_updated: '%{book}本の更新に成功しました'
+      book_updated: '%{book}の更新に成功しました'
     delete:
-      book_deleted: '%{book}本の削除に成功しました'
+      book_deleted: '%{book}の削除に成功しました'
