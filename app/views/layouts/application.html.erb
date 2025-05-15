@@ -12,7 +12,12 @@
 
   <header>
     <% if user_signed_in? %>
-
+      <li>
+        <%= link_to "ユーザー情報編集", edit_user_registration_path %>
+      </li>
+      <li>
+        <%= link_to "ユーザー一覧", users_path %>
+      </li>
       <li>
         <%= link_to "本の一覧", '/' %>
       </li>
@@ -30,7 +35,6 @@
   </header>
 
   <body class="<%= params[:action] %>">
-    <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
