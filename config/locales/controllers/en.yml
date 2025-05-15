@@ -1,8 +1,5 @@
 en:
-  books:
-    create:
-      book_created: 'Successfully added the %{book}.'
-    update:
-      book_updated: 'Successfully updated the %{book}.'
-    delete:
-      book_deleted: 'Successfully deleted the %{book}.'
+  message:
+    create_success: 'Successfully added the %{resource}.'
+    update_success: 'Successfully updated the %{resource}.'
+    delete_success: 'Successfully deleted the %{resource}.'

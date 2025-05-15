@@ -1,8 +1,5 @@
 ja:
-  books:
-    create:
-      book_created: '%{book}の追加に成功しました'
-    update:
-      book_updated: '%{book}の更新に成功しました'
-    delete:
-      book_deleted: '%{book}の削除に成功しました'
+  message:
+    create_success: '%{resource}の追加に成功しました'
+    update_success: '%{resource}の更新に成功しました'
+    delete_success: '%{resource}の削除に成功しました'
