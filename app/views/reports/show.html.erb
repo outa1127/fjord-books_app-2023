@@ -4,6 +4,18 @@
   <%= render @report %>
 </div>
 
+<h3>コメントを追加</h3>
+<%= form_with model: [@report, Comment.new], local: true do |f| %>
+  <div>
+    <%= f.label :body, style: "display: block" %>
+    <%= f.text_area :tbody %>
+  </div>
+  
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+
 <nav class="page-nav">
   <% if @report.user == current_user %>
     <%= link_to t('views.common.edit', name: Report.model_name.human.downcase), edit_report_path(@report) %> |

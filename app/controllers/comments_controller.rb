@@ -20,7 +20,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    commentable = current_user.comments.find(params[:id])
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to commentable notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
@@ -28,8 +27,17 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def find_commentable
-    
+    if params[:book_id]
+      @commentable = Book.find(params[:book_id])
+    elsif params[:report_id]
+      @commentable = Report.find(params[:report_id])
+    end
+  end
+
+  def set_commemt
+    @comment = Comment.find(parama[:id])
   end
 
   def comment_params
