@@ -147,3 +147,4 @@ ja:
       not_locked: はロックされていません。
       not_saved:
         other: '%{count} 件のエラーが発生したため %{resource} は保存されませんでした。'
+        one: '%{count} 件のエラーが発生したため %{resource} は保存されませんでした。'
