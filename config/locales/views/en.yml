@@ -1,0 +1,26 @@
+en:
+  helpers:
+    submit:
+      create: 'create'
+      update: 'update'
+      submit: 'submit'
+  books:
+    new:
+      heading: 'New book'
+      back: 'Back to books'
+    index:
+      books: 'Books'
+      show: 'Show this book'
+      create: 'New book'
+      title: 'Title'
+      memo: 'Memo'
+      author: 'Author'
+      picture: 'Picture'
+    show:
+      edit: 'Edit this book'
+      back: 'Back to Books'
+      destroy: 'Destroy this book'
+    edit:
+      heading: 'Editing book'
+      show: 'Show this book'
+      back: 'Back to books'

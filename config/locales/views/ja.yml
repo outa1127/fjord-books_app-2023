@@ -1,0 +1,26 @@
+ja:
+  helpers:
+    submit:
+      create: '登録する'
+      update: '更新する'
+      submit: '保存する'
+  books:
+    new:
+      heading: '図書追加'
+      back: '図書一覧へ戻る'
+    index:
+      books: '図書一覧'
+      show: '詳細'
+      create: '図書の追加'
+      title: 'タイトル'
+      memo: 'メモ'
+      author: '著者'
+      picture: '写真'
+    show:
+      edit: '編集'
+      back: '一覧に戻る'
+      destroy: '削除'
+    edit:
+      heading: '図書の編集'
+      show: '詳細に戻る'
+      back: '図書一覧に戻る'

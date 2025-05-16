@@ -1,0 +1,5 @@
+en:
+  message:
+    create_success: 'Successfully added the %{resource}.'
+    update_success: 'Successfully updated the %{resource}.'
+    delete_success: 'Successfully deleted the %{resource}.'
