@@ -4,10 +4,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[destroy]
 
   def create
-    # 関連付ける親モデルのインスタンスを返している
     @commentable = find_commentable
-    # 親モデルのインスタンスに紐づけられたcommentsのインスタンスのみ作成
-    # comment_paramsにはフォームから送られてきた値が入っている
     @comment = @commentable.comments.build(comment_params)
 
     respond_to do |format|
