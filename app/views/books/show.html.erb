@@ -4,11 +4,16 @@
   <%= render @book %>
 </div>
 
+<h3>コメント一覧</h3>
+<% @book.comments.each do |comment| %>
+  <p><%= comment.body %></p>
+<% end %>
+
 <h3>コメントを追加</h3>
 <%= form_with model: [@book, Comment.new], local: true do |f| %>
   <div>
     <%= f.label :body, style: "display: block" %>
-    <%= f.text_area :tbody %>
+    <%= f.text_area :body %>
   </div>
   
   <div>
