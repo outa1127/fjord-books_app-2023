@@ -1,13 +1,13 @@
-<h3>コメント一覧</h3>
+<h3><%= t('views.common.title_index', name: i18n_pluralize(Comment.model_name.human)) %></h3>
 <% element.comments.each do |comment| %>
   <p>ユーザー名：<%= comment.user.name.presence || comment.user.email %></p>
   <p><%= comment.body %> <%= comment.created_at %></p> 
   <% if current_user == comment.user %>
-    <%= button_to '削除', [element, comment], method: :delete %>
+    <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), [element, comment], method: :delete %>
   <% end %>
 <% end %>
 
-<h3>コメントを追加</h3>
+<h3><%= t('views.common.new', name: Comment.model_name.human.downcase) %></h3>
 <%= form_with model: [element, Comment.new], local: true do |f| %>
   <div>
     <%= f.label :body, style: "display: block" %>
