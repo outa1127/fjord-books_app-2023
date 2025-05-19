@@ -23,14 +23,13 @@
     <% end %>
 </div>
 
-
 <h3><%= t('views.common.new', name: Comment.model_name.human.downcase) %></h3>
 <%= form_with model: [element, Comment.new], local: true do |f| %>
   <div>
     <%= f.label :body, style: "display: block" %>
     <%= f.text_area :body, required: true %>
   </div>
-  
+
   <div>
     <%= f.submit %>
   </div>
