@@ -2,6 +2,9 @@
 <% element.comments.each do |comment| %>
   <p>ユーザー名：<%= comment.user.name.presence || comment.user.email %></p>
   <p><%= comment.body %> <%= comment.created_at %></p> 
+  <% if current_user == comment.user %>
+    <%= button_to '削除', [element, comment], method: :delete %>
+  <% end %>
 <% end %>
 
 <h3>コメントを追加</h3>

@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to commentable notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
+      format.html { redirect_to @comment.commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
     end
   end
 
@@ -36,8 +36,8 @@ class CommentsController < ApplicationController
     end
   end
 
-  def set_commemt
-    @comment = Comment.find(parama[:id])
+  def set_comment
+    @comment = Comment.find(params[:id])
   end
 
   def comment_params
