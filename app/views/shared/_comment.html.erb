@@ -1,0 +1,17 @@
+<h3>コメント一覧</h3>
+<% element.comments.each do |comment| %>
+  <p>ユーザー名：<%= comment.user.name.presence || comment.user.email %></p>
+  <p><%= comment.body %> <%= comment.created_at %></p> 
+<% end %>
+
+<h3>コメントを追加</h3>
+<%= form_with model: [element, Comment.new], local: true do |f| %>
+  <div>
+    <%= f.label :body, style: "display: block" %>
+    <%= f.text_area :body %>
+  </div>
+  
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
