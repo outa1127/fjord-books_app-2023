@@ -1,11 +1,28 @@
 <h3><%= t('views.common.title_index', name: i18n_pluralize(Comment.model_name.human)) %></h3>
-<% element.comments.each do |comment| %>
-  <p>ユーザー名：<%= comment.user.name.presence || comment.user.email %></p>
-  <p><%= comment.body %> <%= comment.created_at %></p> 
-  <% if current_user == comment.user %>
-    <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), [element, comment], method: :delete %>
-  <% end %>
-<% end %>
+
+<div id="comments" class="index-items">
+
+    <% element.comments.each do |comment| %>
+      <div class="index-item">
+        <div>
+          <strong><%= User.human_attribute_name(:name) %>:</strong>
+          <%= comment.user.name.presence || comment.user.email %>
+        </div>
+        <div>
+          <strong><%= Comment.human_attribute_name(:body) %>:</strong>
+          <%= comment.body %>
+        </div>
+        <div>
+          <strong><%= Comment.human_attribute_name(:created_at) %>:</strong>
+          <%= comment.created_at %>
+        </div>
+        <% if current_user == comment.user %>
+          <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), [element, comment], method: :delete %>
+        <% end %>
+      </div>
+    <% end %>
+</div>
+
 
 <h3><%= t('views.common.new', name: Comment.model_name.human.downcase) %></h3>
 <%= form_with model: [element, Comment.new], local: true do |f| %>

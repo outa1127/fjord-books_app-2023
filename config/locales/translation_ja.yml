@@ -24,3 +24,4 @@ ja:
         body: 本文
       comment:
         body: コメント
+        created_at: 作成日
