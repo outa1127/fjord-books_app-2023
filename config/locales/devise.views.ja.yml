@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+        post_code: 郵便番号
+        address: 住所
+        introduction: 自己紹介
+    models:
+      user:
+        one: ユーザー
+        other: ユーザー
+  errors:
+    messages:
+      not_saved:
+        other: '%{count} 件のエラーが発生したため %{resource} は保存されませんでした。'
+        one: '%{count} 件のエラーが発生したため %{resource} は保存されませんでした。'
