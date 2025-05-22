@@ -23,9 +23,9 @@ class ReportsController < ApplicationController
 
     if @report.save
       if @report[:content].include?('http://localhost:3000/reports')
-        mentioned_report_ids = @report[:content].scan(%r{http://localhost:3000/reports/(\d+)})
+        mentioned_report_ids = @report[:content].scan(%r{http://localhost:3000/reports/(\d+)}).flatten.map(&:to_i)
         mentioned_report_ids.each do |mentioned_report_id|
-          @report.mentioning_relationships.create(mentioned_id: mentioned_report_id[0].to_i)
+          @report.mentioning_relationships.create(mentioned_id: mentioned_report_id)
         end
       end
       redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
@@ -35,7 +35,17 @@ class ReportsController < ApplicationController
   end
 
   def update
+    mentioned_report_ids = @report[:content].scan(%r{http://localhost:3000/reports/(\d+)}).flatten.map(&:to_i)
     if @report.update(report_params)
+      # レポートが編集によって追加された場合
+      new_mentioned_report_ids = @report[:content].scan(%r{http://localhost:3000/reports/(\d+)}).flatten.map(&:to_i)
+      add_mentioned_report_ids = new_mentioned_report_ids - mentioned_report_ids
+      add_mentioned_report_ids.each do |add_mentioned_report_id|
+        @report.mentioning_relationships.create(mentioned_id: add_mentioned_report_id)
+      end
+      delete_mentioned_report_ids = mentioned_report_ids - new_mentioned_report_ids
+      @report.mentioning_relationships.where(mentioned_id: delete_mentioned_report_ids).destroy_all
+
       redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
       render :edit, status: :unprocessable_entity
