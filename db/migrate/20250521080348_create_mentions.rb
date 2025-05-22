@@ -6,7 +6,6 @@ class CreateMentions < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
-    # Mentionモデルのmentioningとmentionedの組み合わせが重複しないようにする
     add_index :mentions, [:mentioning_id, :mentioned_id], unique: true
   end
 end
