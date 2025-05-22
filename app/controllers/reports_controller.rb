@@ -37,7 +37,6 @@ class ReportsController < ApplicationController
   def update
     mentioned_report_ids = @report[:content].scan(%r{http://localhost:3000/reports/(\d+)}).flatten.map(&:to_i)
     if @report.update(report_params)
-      # レポートが編集によって追加された場合
       new_mentioned_report_ids = @report[:content].scan(%r{http://localhost:3000/reports/(\d+)}).flatten.map(&:to_i)
       add_mentioned_report_ids = new_mentioned_report_ids - mentioned_report_ids
       add_mentioned_report_ids.each do |add_mentioned_report_id|
