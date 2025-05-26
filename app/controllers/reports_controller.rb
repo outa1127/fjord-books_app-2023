@@ -43,10 +43,10 @@ class ReportsController < ApplicationController
 
   # DELETE /reports/1 or /reports/1.json
   def destroy
-    @report.destroy
-
-    respond_to do |format|
-      format.html { redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human) }
+    if @report.destroy!
+      redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
+    else
+      redirect_to reports_url, notice: t('controllers.common.notice_failure_destroy', name: Report.model_name.human)
     end
   end
 
