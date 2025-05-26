@@ -7,20 +7,16 @@ class CommentsController < ApplicationController
     @commentable = find_commentable
     @comment = @commentable.comments.build(comment_params)
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @comment.commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human) }
-      else
-        format.html { redirect_to @comment.commentable, flash: { danger: t('defaults.message.not_created', item: Comment.model_name.human) } }
-      end
+    if @comment.save
+      redirect_to @comment.commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
+    else
+      render template: "#{@commentable.class.model_name.plural}/show", status: :unprocessable_entity
     end
   end
 
   def destroy
     @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to @comment.commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human) }
-    end
+    redirect_to @comment.commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
   private
