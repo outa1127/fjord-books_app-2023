@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-class CommentsController < ApplicationController
+class BaseCommentsController < ApplicationController
+  before_action :set_commentable
   before_action :set_comment, only: %i[destroy]
 
   def create
-    @commentable = find_commentable
     @comment = @commentable.comments.build(comment_params)
 
     if @comment.save
@@ -23,14 +23,6 @@ class CommentsController < ApplicationController
   end
 
   private
-
-  def find_commentable
-    if params[:book_id]
-      Book.find(params[:book_id])
-    elsif params[:report_id]
-      Report.find(params[:report_id])
-    end
-  end
 
   def set_comment
     @comment = Comment.find(params[:id])
