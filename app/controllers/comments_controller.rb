@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BaseCommentsController < ApplicationController
+class CommentsController < ApplicationController
   before_action :set_commentable
   before_action :set_comment, only: %i[destroy]
 

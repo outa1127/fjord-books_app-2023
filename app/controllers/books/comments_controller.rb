@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Books
-  class CommentsController < BaseCommentsController
+  class CommentsController < CommentsController
     private
 
     def set_commentable
