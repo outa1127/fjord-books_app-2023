@@ -3,7 +3,26 @@
 require 'test_helper'
 
 class ReportTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @user = users(:alice)
+    @alice_report = reports(:alice_report)
+    @mentioned_report = reports(:mentioned_report)
+  end
+  test '#editable?' do
+    assert_equal true, @alice_report.editable?(@user)
+  end
+
+  test '#created_on' do
+    assert_equal Date.parse('2023-10-01 12:00:00'), @alice_report.created_on
+  end
+
+  test 'create report and check mentionn reflected' do
+    content_with_mention = "この日報が素晴らしかったです: http://localhost:3000/reports/#{@mentioned_report.id}"
+    report = Report.create!(
+      user: @user,
+      title: 'test report',
+      content: content_with_mention
+    )
+    assert_includes report.reload.mentioning_reports, @mentioned_report
+  end
 end

@@ -6,7 +6,7 @@ require 'test_helper'
 class ReportsTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
   def setup
-    @report = reports(:test_report)
+    @report = reports(:alice_report)
     @updated_report = reports(:updated_report)
 
     visit root_url
