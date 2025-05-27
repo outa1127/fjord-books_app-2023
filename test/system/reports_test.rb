@@ -16,7 +16,7 @@ class ReportsTest < ApplicationSystemTestCase
 
   test 'visiting the index' do
     visit reports_url
-    assert_selector 'p', text: 'test日報'
+    assert_selector 'p', text: @report.content
   end
 
   test 'should create report' do
