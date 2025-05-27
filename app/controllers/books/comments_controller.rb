@@ -2,11 +2,21 @@
 
 module Books
   class CommentsController < CommentsController
+    def create
+      book = Book.find(params[:book_id])
+      comment = book.comments.build(comment_params)
+
+      if comment.save
+        redirect_to book, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
+      else
+        render template: "#{book.class.model_name.plural}/show", status: :unprocessable_entity
+      end
+    end
+
     private
 
-    def set_commentable
-      @book = Book.find(params[:book_id])
-      @commentable = @book
+    def comment_params
+      params.require(:comment).permit(:body).merge(user_id: current_user.id)
     end
   end
 end
