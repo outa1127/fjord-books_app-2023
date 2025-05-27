@@ -4,11 +4,8 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[destroy]
 
   def destroy
-    if @comment.destroy!
-      redirect_to @comment.commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
-    else
-      redirect_to @comment.commentable, notice: t('controllers.common.notice_failure_destroy', name: Comment.model_name.human)
-    end
+    @comment.destroy!
+    redirect_to @comment.commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
   private
