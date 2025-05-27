@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  # before_action :set_comment, only: %i[destroy]
-
   def destroy
     comment = Comment.find(params[:id])
     comment.destroy!
