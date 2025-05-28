@@ -12,11 +12,5 @@ module Books
         render template: "#{book.class.model_name.plural}/show", status: :unprocessable_entity
       end
     end
-
-    private
-
-    def comment_params
-      params.require(:comment).permit(:body).merge(user_id: current_user.id)
-    end
   end
 end
