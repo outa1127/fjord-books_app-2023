@@ -5,10 +5,6 @@ alice_report:
   title: test日報
   content: testの内容です
   created_at: 2023-10-01 12:00:00
-updated_report:
-  user: alice
-  title: test日報(修正済み)
-  content: testの内容です(修正済み)
 
 mentioned_report:
   user: bob
