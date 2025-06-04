@@ -7,7 +7,7 @@ class ReportTest < ActiveSupport::TestCase
     @alice = users(:alice)
     @bob = users(:bob)
     @alice_report = reports(:alice_report)
-    @mentioned_report = reports(:mentioned_report)
+    @bob_report = reports(:bob_report)
   end
   test 'editable?' do
     assert @alice_report.editable?(@alice)
@@ -19,12 +19,12 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test 'create report and check mentionn reflected' do
-    content_with_mention = "この日報が素晴らしかったです: http://localhost:3000/reports/#{@mentioned_report.id}"
+    content_with_mention = "この日報が素晴らしかったです: http://localhost:3000/reports/#{@bob_report.id}"
     report = Report.create!(
       user: @alice,
       title: 'test report',
       content: content_with_mention
     )
-    assert_includes report.reload.mentioning_reports, @mentioned_report
+    assert_includes report.reload.mentioning_reports, @bob_report
   end
 end
