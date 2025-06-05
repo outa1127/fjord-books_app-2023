@@ -44,6 +44,6 @@ class Report < ApplicationRecord
       mentioning_relationships.create!(mentioned_id: add_mentioned_report_id)
     end
 
-    mentioning_relationships.where(mentioned_id: deleted_mentioned_report_ids).destroy_all
+    mentioning_relationships.where(mentioned_id: deleted_mentioned_report_ids).find_each(&:destroy!)
   end
 end
