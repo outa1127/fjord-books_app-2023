@@ -32,8 +32,6 @@ class ReportsController < ApplicationController
   end
 
   def update
-    mentioned_report_ids = @report.collect_mentioned_report_ids
-
     ActiveRecord::Base.transaction do
       @report.update!(report_params)
       @report.update_mentions(mentioned_report_ids)

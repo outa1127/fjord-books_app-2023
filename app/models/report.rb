@@ -34,11 +34,12 @@ class Report < ApplicationRecord
     content.scan(%r{http://localhost:3000/reports/(\d+)}).flatten.map(&:to_i)
   end
 
-  def update_mentions(mentioned_report_ids)
+  def update_mentions
+    old_mentioned_report_id = mentioning_relationships.map(&:mentioned_id)
     new_mentioned_report_ids = collect_mentioned_report_ids
 
-    added_mentioned_report_ids = new_mentioned_report_ids - mentioned_report_ids
-    deleted_mentioned_report_ids = mentioned_report_ids - new_mentioned_report_ids
+    added_mentioned_report_ids = new_mentioned_report_ids - old_mentioned_report_id
+    deleted_mentioned_report_ids = old_mentioned_report_id - new_mentioned_report_ids
 
     added_mentioned_report_ids.each do |add_mentioned_report_id|
       mentioning_relationships.create!(mentioned_id: add_mentioned_report_id)
