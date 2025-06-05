@@ -13,6 +13,7 @@ class Report < ApplicationRecord
                                       dependent: :destroy,
                                       inverse_of: :mentioned
   has_many :mentioned_reports, through: :mentioned_relationships, source: :mentioning
+
   validates :title, presence: true
   validates :content, presence: true
 
@@ -25,9 +26,9 @@ class Report < ApplicationRecord
   end
 
   def execute_save_procedure
-    ActiveRecord::Base.transaction do
+    transaction do
       save!
-      create_mentions
+      refresh_mentions
     end
     true
   rescue ActiveRecord::RecordInvalid
@@ -35,9 +36,9 @@ class Report < ApplicationRecord
   end
 
   def execute_update_procedure(report_params)
-    ActiveRecord::Base.transaction do
+    transaction do
       update!(report_params)
-      update_mentions
+      refresh_mentions
     end
     true
   rescue ActiveRecord::RecordInvalid
@@ -47,25 +48,13 @@ class Report < ApplicationRecord
   private
 
   def collect_mentioned_report_ids
-    content.scan(%r{http://localhost:3000/reports/(\d+)}).flatten.map(&:to_i)
+    content.scan(%r{http://localhost:3000/reports/(\d+)}).flatten.map(&:to_i).uniq
   end
 
-  def create_mentions
+  def refresh_mentions
+    mentioning_relationships.destroy_all
     collect_mentioned_report_ids.each do |mentioned_report_id|
       mentioning_relationships.create!(mentioned_id: mentioned_report_id)
     end
-  end
-
-  def update_mentions
-    new_mentioned_report_ids = collect_mentioned_report_ids
-
-    added_mentioned_report_ids = new_mentioned_report_ids - mentioning_report_ids
-    deleted_mentioned_report_ids = mentioning_report_ids - new_mentioned_report_ids
-
-    added_mentioned_report_ids.each do |add_mentioned_report_id|
-      mentioning_relationships.create!(mentioned_id: add_mentioned_report_id)
-    end
-
-    mentioning_relationships.where(mentioned_id: deleted_mentioned_report_ids).find_each(&:destroy!)
   end
 end
