@@ -21,22 +21,30 @@ class ReportsController < ApplicationController
   def create
     @report = current_user.reports.new(report_params)
 
-    if @report.save && @report.create_mentions
-      redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
-    else
-      render :new, status: :unprocessable_entity
+    @report.transaction do
+      @report.save!
+      @report.create_mentions
     end
+
+    redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
   end
 
   def update
-    mentioned_report_ids = @report[:content].scan(%r{http://localhost:3000/reports/(\d+)}).flatten.map(&:to_i)
-    if @report.update(report_params)
-      @report.update_mentions(mentioned_report_ids)
+    mentioned_report_ids = @report.collect_mentioned_report_ids
 
-      redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
-    else
-      render :edit, status: :unprocessable_entity
+    @report.transaction do
+      @report.update!(report_params)
+      @report.update_mentions(mentioned_report_ids)
     end
+
+    redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
+
+    # if @report.update(report_params) && @report.update_mentions(mentioned_report_ids)
+
+    #   redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
+    # else
+    #   render :edit, status: :unprocessable_entity
+    # end
   end
 
   def destroy
