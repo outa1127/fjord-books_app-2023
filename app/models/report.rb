@@ -24,6 +24,16 @@ class Report < ApplicationRecord
     created_at.to_date
   end
 
+  def execute_save_procedure
+    ActiveRecord::Base.transaction do
+      save!
+      create_mentions
+    end
+    true
+  rescue ActiveRecord::RecordInvalid
+    false
+  end
+
   def create_mentions
     collect_mentioned_report_ids.each do |mentioned_report_id|
       mentioning_relationships.create!(mentioned_id: mentioned_report_id)
@@ -32,6 +42,16 @@ class Report < ApplicationRecord
 
   def collect_mentioned_report_ids
     content.scan(%r{http://localhost:3000/reports/(\d+)}).flatten.map(&:to_i)
+  end
+
+  def execute_update_procedure(report_params)
+    ActiveRecord::Base.transaction do
+      update!(report_params)
+      update_mentions
+    end
+    true
+  rescue ActiveRecord::RecordInvalid
+    false
   end
 
   def update_mentions
