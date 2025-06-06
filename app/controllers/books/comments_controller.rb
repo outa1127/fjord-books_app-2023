@@ -2,8 +2,13 @@
 
 module Books
   class CommentsController < CommentsController
+    def render_view_comment_error
+      'books/show'
+    end
+
     def set_commentable
-      @commentable = Book.find(params[:book_id])
+      @book = Book.find(params[:book_id])
+      @commentable = @book
     end
   end
 end

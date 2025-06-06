@@ -2,8 +2,13 @@
 
 module Reports
   class CommentsController < CommentsController
+    def render_view_comment_error
+      'reports/show'
+    end
+
     def set_commentable
-      @commentable = Report.find(params[:report_id])
+      @report = Report.find(params[:report_id])
+      @commentable = @report
     end
   end
 end

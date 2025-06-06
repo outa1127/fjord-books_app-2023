@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     if comment.save
       redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      render template: "#{@commentable.class.model_name.plural}/show", status: :unprocessable_entity
+      render template: render_view_comment_error, status: :unprocessable_entity
     end
   end
 
